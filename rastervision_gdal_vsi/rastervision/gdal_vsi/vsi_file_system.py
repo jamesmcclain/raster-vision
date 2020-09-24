@@ -99,7 +99,7 @@ class VsiFileSystem(FileSystem):
         if not stats or stats.IsDirectory():
             raise FileNotFoundError('{} does not exist'.format(vsipath))
 
-        handle = old_handle = None
+        result = handle = old_handle = None
         try:
             with VsiFileSystem.read_handle_cache_lock:
                 if vsipath in VsiFileSystem.read_handle_cache:
